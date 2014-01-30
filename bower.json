@@ -1,0 +1,10 @@
+{
+  "name": "women-rights",
+  "private": true,
+  "dependencies": {
+    "sass-bootstrap": "~3.0.0",
+    "jquery": "~2.0.0",
+    "jquery-parse": "https://github.com/mholt/jquery.parse.git#~2.0.1"
+  },
+  "devDependencies": {}
+}
