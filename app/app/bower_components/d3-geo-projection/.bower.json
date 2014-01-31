@@ -1,0 +1,41 @@
+{
+  "name": "d3-geo-projection",
+  "main": "d3.geo.projection.js",
+  "homepage": "https://github.com/d3/d3-geo-projection",
+  "authors": [
+    "Mike Bostock"
+  ],
+  "description": "Extended geographic projections for D3.js.",
+  "keywords": [
+    "cartography",
+    "map projections",
+    "visualization"
+  ],
+  "license": "BSD",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "d3": "3"
+  },
+  "devDependencies": {
+    "d3": "3",
+    "smash": "0.0",
+    "uglify-js": "2.3",
+    "vows": "0.7"
+  },
+  "_release": "7487892629",
+  "_resolution": {
+    "type": "branch",
+    "branch": "bower",
+    "commit": "74878926295a9db9572cfc7d7a0f9262b4557ffe"
+  },
+  "_source": "https://github.com/geometeor/d3-geo-projection.git",
+  "_target": "bower",
+  "_originalSource": "https://github.com/geometeor/d3-geo-projection.git",
+  "_direct": true
+}

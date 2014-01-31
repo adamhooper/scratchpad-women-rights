@@ -4,7 +4,11 @@
   "dependencies": {
     "sass-bootstrap": "~3.0.0",
     "jquery": "~2.0.0",
-    "jquery-parse": "https://github.com/mholt/jquery.parse.git#~2.0.1"
+    "jquery-parse": "https://github.com/mholt/jquery.parse.git#~2.0.1",
+    "d3-geo-projection": "https://github.com/geometeor/d3-geo-projection.git#bower",
+    "topojson": "~1.4.6",
+    "d3": "~3.4.1",
+    "queue-async": "~1.0.7"
   },
   "devDependencies": {}
 }

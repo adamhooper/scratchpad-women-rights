@@ -13,6 +13,35 @@ $icon-font-path: "/bower_components/sass-bootstrap/fonts/";
   min-height: 5em;
 }
 
+.map svg {
+  path.sphere {
+    stroke: none;
+    fill: rgb(198,219,239);
+  }
+
+  path.graticule {
+    stroke: white;
+    stroke-width: 1;
+    fill: none;
+  }
+
+  g.countries path {
+    stroke: white;
+    stroke-width: 1;
+    fill: white;
+
+    &.q0-3 {
+      fill: #d7191c;
+    }
+    &.q1-3 {
+      fill: #fdae61;
+    }
+    &.q2-3 {
+      fill: #1a9641;
+    }
+  }
+}
+
 /* Responsive: Portrait tablets and up */
 @media screen and (min-width: 768px) {
     .container {
