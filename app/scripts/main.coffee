@@ -30,7 +30,8 @@ csvRowsToRightsAndCountries = (csvRows) ->
   rights = (new Right(i, spec.name) for spec, i in rightSpecs)
 
   countries = for row in csvRows
-    hasRightById = (spec.test(row[spec.column]) for spec in rightSpecs)
+    hasRightById = for spec in rightSpecs
+      spec.test(row[spec.column])
     new Country(row['ISO CODE'], row['COUNTRY'], hasRightById)
 
   countries.sort((a, b) -> a.name.localeCompare(b.name))

@@ -56,12 +56,14 @@ class ScoredCountriesView
 
     countryIdToPoints = (id) =>
       name = countryNameById.get(id)
-      country = @countryCollection.byName(name)
-      if country
-        @rightScoringFormula.countryScore(country)
+      if !name?
+        null
       else
-        #console.log('Could not find country', id, name)
-        0
+        country = @countryCollection.byName(name)
+        if !country?
+          null
+        else
+          @rightScoringFormula.countryScore(country)
 
     ready = (error, world) =>
       countries = topojson.feature(world, world.objects.countries).features
@@ -72,6 +74,7 @@ class ScoredCountriesView
       g.selectAll('path')
         .data(countries)
         .enter().append('path')
+          .attr('id', (d) -> "country-#{d.id}")
           .attr('d', path)
 
       @_d3.update = =>
@@ -79,7 +82,9 @@ class ScoredCountriesView
         almostMaxPoints = Math.max(maxPoints - 2, 0)
 
         pointsToClass = (points) ->
-          if points == maxPoints
+          if !points?
+            null
+          else if points == maxPoints
             'q2-3'
           else if points >= almostMaxPoints && almostMaxPoints > 0
             'q1-3'
