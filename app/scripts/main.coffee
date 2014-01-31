@@ -2,27 +2,27 @@ csvRowsToRightsAndCountries = (csvRows) ->
   rightSpecs = [
     {
       column: 'Laws against domestic violence?'
-      name: 'Laws against domestic violence'
+      name: 'Laws protecting you from domestic violence'
       test: (s) -> s == 'Yes'
     }
     {
       column: 'Laws against sexual harrassment'
-      name: 'Laws against sexual harrassment'
+      name: 'Laws protecting you from sexual harrassment'
       test: (s) -> s == 'Yes'
     }
     {
       column: 'Year women got right to vote'
-      name: 'Women can vote'
+      name: 'The right to vote'
       test: (s) -> /\d/.test(s)
     }
     {
       column: 'Year women got right to stand for election'
-      name: 'Women can be elected'
+      name: 'The right to run for parliament'
       test: (s) -> /\d/.test(s)
     }
     {
       column: 'Year first woman elected (E) or appointed (A) to parliament'
-      name: 'Women are in parliament'
+      name: 'People of your gender in parliament'
       test: (s) -> /\d/.test(s)
     }
   ]

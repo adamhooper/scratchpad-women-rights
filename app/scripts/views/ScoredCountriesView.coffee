@@ -7,16 +7,40 @@ class ScoredCountriesView
     @$el = $(@el)
 
   _initialRender: ->
-    @$map = $('<div class="map"></div>').appendTo(@$el)
+    $legend = $('''
+      <div class="legend">
+        <h4>Score by country</h4>
+        <ul>
+          <li class="q2-3"><span class="swatch"/><span class="max-points">all possible points</span></li>
+          <li class="q1-3" style="display:none;"><span class="swatch"/><span class="almost-max-points">many possible points</span> or more</li>
+          <li class="q0-3" style="display:none;"><span class="swatch"/>Not enough points</li>
+        </ul>
+      </div>
+    ''').appendTo(@$el)
+
+    pointsToString = (points) -> if points == 1 then '1 point' else "#{points} points"
+
+    updateLegend = (maxPoints, almostMaxPoints) =>
+      $legend.find('.max-points').text(pointsToString(maxPoints))
+      if almostMaxPoints > 0
+        $legend.find('.almost-max-points').text(pointsToString(almostMaxPoints))
+        $legend.find('li.q1-3').show()
+      else
+        $legend.find('li.q1-3').hide()
+      if maxPoints > 0
+        $legend.find('li.q0-3').show()
+      else
+        $legend.find('li.q0-3').hide()
+
+    $map = $('<div class="map"></div>').appendTo(@$el)
 
     projection = d3.geo.naturalEarth()
 
     path = d3.geo.path()
       .projection(projection)
 
-    svg = d3.select(@$map.get(0)).append('svg')
-      .attr('width', '100%')
-      .attr('height', '100%')
+    svg = d3.select($map.get(0)).append('svg')
+      .attr('viewBox', '0 0 960 500')
 
     svg.append('path')
       .datum(type: 'Sphere')
@@ -64,6 +88,8 @@ class ScoredCountriesView
 
         g.selectAll('path')
           .attr('class', (d) -> 'country ' + pointsToClass(countryIdToPoints(d.id)))
+
+        updateLegend(maxPoints, almostMaxPoints)
 
       @_d3.update()
 
